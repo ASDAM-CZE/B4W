@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>B4W Support – Podpora pro developery a stavební firmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Komplexní podpora pro developery a stavební firmy – sdílené nákupy, pronájem vozidel a strojů, poradenství.">
+    <style>
+        :root {
+            --primary: #1f4b82;
+            --secondary: #f5f7fa;
+            --accent: #f0a500;
+            --text: #222;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            background: #ffffff;
+            line-height: 1.6;
+        }
+        header {
+            background: var(--primary);
+            color: #fff;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 0.05em;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            padding: 3.5rem 10%;
+            background: linear-gradient(to right, #ffffff, var(--secondary));
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .hero p {
+            margin-bottom: 1.5rem;
+            max-width: 36rem;
+        }
+        .hero .cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        .hero-highlight {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            font-size: 0.95rem;
+        }
+        .hero-highlight h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        section {
+            padding: 3rem 10%;
+        }
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        section p.lead {
+            margin-bottom: 2rem;
+            max-width: 40rem;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.8rem;
+        }
+        .card {
+            background: var(--secondary);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+        }
+        .card ul {
+            margin-top: 0.6rem;
+            padding-left: 1.1rem;
+            font-size: 0.95rem;
+        }
+        .card ul li {
+            margin-bottom: 0.3rem;
+        }
+        .two-columns {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr);
+            gap: 2rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #e8edf7;
+            color: var(--primary);
+            border-radius: 999px;
+            padding: 0.25rem 0.8rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.6rem;
+        }
+        .contact {
+            background: var(--secondary);
+        }
+        .contact-form {
+            max-width: 32rem;
+        }
+        .contact-form label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.6rem 0.7rem;
+            margin-bottom: 0.9rem;
+            border-radius: 6px;
+            border: 1px solid #ccd3e0;
+            font-size: 0.95rem;
+        }
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        footer {
+            padding: 1.5rem 10%;
+            font-size: 0.85rem;
+            background: #111827;
+            color: #9ca3af;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        footer a {
+            color: #e5e7eb;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">B4W Support</div>
+    <nav>
+        <a href="#sluzby">Služby</a>
+        <a href="#vyhody">Výhody</a>
+        <a href="#partneri">Pro koho</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>Podpora pro developery a stavební firmy, která šetří čas i peníze</h1>
+        <p>
+            Zajišťujeme sdílené nákupy za lepší ceny, pronájem vozidel a stavebních strojů,
+            provozní support a poradenství. Vy se soustředíte na projekty, my na zbytek.
+        </p>
+        <div class="cta">
+            <button class="btn btn-primary">Domluvte si úvodní konzultaci</button>
+            <button class="btn btn-secondary">Stát se partnerskou firmou</button>
+        </div>
+    </div>
+    <div class="hero-highlight">
+        <h2>Co řešíme za vás</h2>
+        <p><strong>• Sdílené nákupy:</strong> materiál, technika, služby – lepší ceny díky objemu.</p>
+        <p><strong>• Pronájmy:</strong> dodávky, osobní vozy, stavební stroje, mechanizace.</p>
+        <p><strong>• Support:</strong> provozní agenda, koordinace dodavatelů, poradenství.</p>
+        <p><strong>• Flexibilně:</strong> od jednorázové akce po dlouhodobou spolupráci.</p>
+    </div>
+</section>
+
+<section id="sluzby">
+    <h2>Naše klíčové služby</h2>
+    <p class="lead">
+        Jsme zázemí pro firmy, které staví, projektují a vyvíjejí. Kombinujeme nákupní sílu,
+        provozní zkušenost a praktické know-how ze staveb a developmentu.
+    </p>
+    <div class="grid-3">
+        <div class="card">
+            <h3>Sdílené nákupy</h3>
+            <ul>
+                <li>Stavební materiál (beton, ocel, dřevo, izolace)</li>
+                <li>Technologie a vybavení (nářadí, měřicí technika, IT)</li>
+                <li>Servisní služby (úklid, ostraha, doprava, skladování)</li>
+                <li>Vyjednání rámcových smluv a množstevních slev</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Pronájem vozidel a strojů</h3>
+            <ul>
+                <li>Dodávkové a osobní vozy pro stavby a projekty</li>
+                <li>Stavební stroje (minibagry, nakladače, vibrační technika)</li>
+                <li>Krátkodobé i dlouhodobé pronájmy</li>
+                <li>Koordinace servisu, pojištění a logistiky</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Poradenství a provozní support</h3>
+            <ul>
+                <li>Nastavení nákupních procesů a schvalování</li>
+                <li>Optimalizace využití strojů a vozového parku</li>
+                <li>Rozpočtová a kapacitní příprava projektů</li>
+                <li>Ad hoc konzultace pro vedení i stavbyvedoucí</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="vyhody">
+    <h2>Proč se vyplatí mít nás po ruce</h2>
+    <div class="two-columns">
+        <div>
+            <span class="badge">Ekonomika & efektivita</span>
+            <h3>Nižší náklady, méně starostí</h3>
+            <p>
+                Díky sdíleným nákupům a centralizovanému pronájmu techniky dosahujeme cen,
+                které jsou pro jednotlivé firmy běžně nedostupné. Zároveň odlehčujeme
+                administrativu a provozní agendu.
+            </p>
+            <p>
+                V praxi to znamená méně času na telefonu s dodavateli, méně excelových tabulek
+                a více času na samotnou realizaci projektů.
+            </p>
+        </div>
+        <div>
+            <span class="badge">Partnerství, ne jen služba</span>
+            <h3>Jsme váš backoffice pro projekty</h3>
+            <p>
+                Nejsme klasická půjčovna ani čistý nákupčí. Fungujeme jako dlouhodobý partner,
+                který rozumí tomu, jak stavíte, jak plánujete a jaké máte limity.
+            </p>
+            <p>
+                Podle toho nastavujeme spolupráci – od jednoduchého ceníku až po
+                komplexní rámcovou smlouvu s jasnými SLA a reportingem.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="partneri">
+    <h2>Pro koho je naše služba ideální</h2>
+    <p class="lead">
+        Nejlépe fungujeme tam, kde je potřeba kombinovat více projektů, více týmů a
+        opakovanou potřebu techniky, materiálu a služeb.
+    </p>
+    <div class="grid-3">
+        <div class="card">
+            <h3>Developerské společnosti</h3>
+            <p>
+                Rezidenční i komerční projekty, menší i střední developeři, kteří chtějí mít
+                nákup, pronájmy a provozní support pod kontrolou, ale nechtějí budovat velký
+                interní tým.
+            </p>
+        </div>
+        <div class="card">
+            <h3>Stavební firmy a generální dodavatelé</h3>
+            <p>
+                Firmy, které realizují stavby na klíč nebo jako generál, a potřebují
+                flexibilní zázemí pro techniku, materiál a koordinaci subdodavatelů.
+            </p>
+        </div>
+        <div class="card">
+            <h3>Menší projekční a realizační týmy</h3>
+            <p>
+                Architekti, projektanti, realizační skupiny, které se chtějí soustředit
+                na odbornou práci a mít jistotu, že provozní část někdo hlídá za ně.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="kontakt" class="contact">
+    <h2>Kontakt a první krok</h2>
+    <div class="two-columns">
+        <div class="contact-form">
+            <p class="lead">
+                Napište nám pár vět o vaší firmě a projektech. Ozveme se vám s návrhem
+                konkrétního modelu spolupráce.
+            </p>
+            <form>
+                <label for="firma">Firma</label>
+                <input type="text" id="firma" name="firma" placeholder="Název společnosti">
+
+                <label for="kontaktni-osoba">Kontaktní osoba</label>
+                <input type="text" id="kontaktni-osoba" name="kontaktni-osoba" placeholder="Jméno a funkce">
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="vas@email.cz">
+
+                <label for="zprava">Stručně o vašich potřebách</label>
+                <textarea id="zprava" name="zprava" placeholder="Např. sdílené nákupy, pronájem strojů, nastavení procesů…"></textarea>
+
+                <button type="submit" class="btn btn-primary">Odeslat nezávazný dotaz</button>
+            </form>
+        </div>
+        <div>
+            <h3>Firemní údaje</h3>
+            <p><strong>B4W Support s.r.o.</strong><br>
+               Havlíčkova, 537 01 Chrudim<br>
+               Česká republika
+            </p>
+            <p><strong>E-mail:</strong> info@b4w-support.cz<br>
+               <strong>Telefon:</strong> +420 000 000 000
+            </p>
+            <p>
+                Preferujeme dlouhodobé partnerství a otevřenou komunikaci.  
+                Pokud máte specifické požadavky (např. konkrétní typ strojů, vlastní dodavatele),
+                umíme se přizpůsobit.
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div>© 2026 B4W Support s.r.o. – Podpora pro developery a stavební firmy</div>
+    <div>
+        <a href="#sluzby">Služby</a> ·
+        <a href="#kontakt">Kontakt</a> ·
+        <a href="#">GDPR & podmínky</a>
+    </div>
+</footer>
+
+</body>
+</html>
